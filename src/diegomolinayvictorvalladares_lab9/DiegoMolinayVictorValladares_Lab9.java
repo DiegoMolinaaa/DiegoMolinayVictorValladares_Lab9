@@ -16,6 +16,8 @@ public class DiegoMolinayVictorValladares_Lab9 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        login main = new login();
+        main.setVisible(true);
     }
     
 }
