@@ -34,6 +34,11 @@ public class login extends javax.swing.JFrame {
         plataforma_alumno = new javax.swing.JFrame();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
+        bt_crudExamen = new javax.swing.JButton();
+        bt_crudClase = new javax.swing.JButton();
+        bt_verClases = new javax.swing.JButton();
+        bt_crudPregunta = new javax.swing.JButton();
+        bt_Calificaciones = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,16 +93,22 @@ public class login extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout plataforma_adminLayout = new javax.swing.GroupLayout(plataforma_admin.getContentPane());
-        plataforma_admin.getContentPane().setLayout(plataforma_adminLayout);
-        plataforma_adminLayout.setHorizontalGroup(
-            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        plataforma_adminLayout.setVerticalGroup(
-            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        plataforma_admin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bt_crudExamen.setText("Crear Examen");
+        plataforma_admin.getContentPane().add(bt_crudExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 270, 40));
+
+        bt_crudClase.setText("Crear Clase");
+        plataforma_admin.getContentPane().add(bt_crudClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 270, 50));
+
+        bt_verClases.setText("Ver Clases");
+        plataforma_admin.getContentPane().add(bt_verClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 270, 60));
+
+        bt_crudPregunta.setText("Crear Pregunta");
+        plataforma_admin.getContentPane().add(bt_crudPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 270, 50));
+
+        bt_Calificaciones.setText("Ir a Centro de Calificaciones");
+        plataforma_admin.getContentPane().add(bt_Calificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 260, 50));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,7 +183,12 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
+    private javax.swing.JButton bt_Calificaciones;
+    private javax.swing.JButton bt_crudClase;
+    private javax.swing.JButton bt_crudExamen;
+    private javax.swing.JButton bt_crudPregunta;
     private javax.swing.JButton bt_registro_m;
+    private javax.swing.JButton bt_verClases;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
