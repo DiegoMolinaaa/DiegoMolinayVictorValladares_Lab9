@@ -300,6 +300,16 @@ public class login extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "Se ha creado el maestro exitosamente");
                 db.desconectar();
+                
+                tf_nombre_maestro.setText("");
+                tf_user_maestro.setText("");
+                tf_password_maestro.setText("");
+                pf_password_maestro.setText("");
+                
+                registro_maestro.setVisible(false);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                this.setVisible(true);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
