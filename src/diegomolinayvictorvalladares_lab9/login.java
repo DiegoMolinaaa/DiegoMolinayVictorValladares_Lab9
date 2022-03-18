@@ -11,6 +11,7 @@ import java.util.Random;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author diego
@@ -24,6 +25,8 @@ public class login extends javax.swing.JFrame {
         initComponents();
         this.pack();
         this.setLocationRelativeTo(null);
+        administrarExamenes aE = new administrarExamenes("./Examenes.cbm");
+        aE.cargarArchivo();
     }
 
     /**
@@ -74,7 +77,9 @@ public class login extends javax.swing.JFrame {
         bt_verClases = new javax.swing.JButton();
         bt_crudPregunta = new javax.swing.JButton();
         bt_Calificaciones = new javax.swing.JButton();
-        jDialog1 = new javax.swing.JDialog();
+        jd_crearExamen = new javax.swing.JDialog();
+        cb_idClases = new javax.swing.JComboBox<>();
+        bt_crearExamen = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -205,6 +210,11 @@ public class login extends javax.swing.JFrame {
         plataforma_admin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_crudExamen.setText("Crear Examen");
+        bt_crudExamen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crudExamenActionPerformed(evt);
+            }
+        });
         plataforma_admin.getContentPane().add(bt_crudExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 270, 40));
 
         bt_crudClase.setText("Crear Clase");
@@ -224,15 +234,32 @@ public class login extends javax.swing.JFrame {
         bt_Calificaciones.setText("Ir a Centro de Calificaciones");
         plataforma_admin.getContentPane().add(bt_Calificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 260, 50));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        bt_crearExamen.setText("Crear Examen");
+        bt_crearExamen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crearExamenActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_crearExamenLayout = new javax.swing.GroupLayout(jd_crearExamen.getContentPane());
+        jd_crearExamen.getContentPane().setLayout(jd_crearExamenLayout);
+        jd_crearExamenLayout.setHorizontalGroup(
+            jd_crearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearExamenLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(jd_crearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_idClases, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_crearExamen, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jd_crearExamenLayout.setVerticalGroup(
+            jd_crearExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearExamenLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(cb_idClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addComponent(bt_crearExamen)
+                .addGap(87, 87, 87))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -443,6 +470,31 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_loginMouseClicked
 
+    private void bt_crudExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crudExamenActionPerformed
+        // TODO add your handling code here:
+        jd_crearExamen.setVisible(true);
+        DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_idClases.getModel();
+        dc.removeAllElements();
+        for (Clase clase : clases) {
+            dc.addElement(clase);
+        }
+        cb_idClases.setModel(dc);
+    }//GEN-LAST:event_bt_crudExamenActionPerformed
+
+    private void bt_crearExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearExamenActionPerformed
+        // TODO add your handling code here:
+        Clase c = (Clase)cb_idClases.getSelectedItem();
+        int idC = c.getIdClase();
+        Examen e = new Examen(idC);
+        administrarExamenes aE = new administrarExamenes("./Examenes.cbm");
+        aE.cargarArchivo();
+        aE.setExamen(e);
+        aE.escribirArchivo();
+        JOptionPane.showMessageDialog(this,
+                "Examen guardado exitosamente");
+        
+    }//GEN-LAST:event_bt_crearExamenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -482,6 +534,7 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
     private javax.swing.JButton bt_Calificaciones;
+    private javax.swing.JButton bt_crearExamen;
     private javax.swing.JButton bt_crudClase;
     private javax.swing.JButton bt_crudExamen;
     private javax.swing.JButton bt_crudPregunta;
@@ -490,8 +543,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_registro_alumno;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
+    private javax.swing.JComboBox<String> cb_idClases;
     private javax.swing.JButton jButton3;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -511,6 +564,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JDialog jd_crearExamen;
     private javax.swing.JLabel label_nombre_alumno;
     private javax.swing.JPasswordField pf_password_alumno;
     private javax.swing.JPasswordField pf_password_maestro;
