@@ -61,6 +61,8 @@ public class login extends javax.swing.JFrame {
         tf_user_alumno = new javax.swing.JTextField();
         tf_password_alumno = new javax.swing.JTextField();
         pf_password_alumno = new javax.swing.JPasswordField();
+        jLabel16 = new javax.swing.JLabel();
+        tf_carrera_alumno = new javax.swing.JTextField();
         plataforma_alumno = new javax.swing.JFrame();
         jPanel4 = new javax.swing.JPanel();
         label_nombre_alumno = new javax.swing.JLabel();
@@ -151,8 +153,8 @@ public class login extends javax.swing.JFrame {
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Nombre");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        jLabel14.setText("Carrera");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
         jPanel3.add(tf_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
         bt_registro_alumno.setText("Registrarse");
@@ -161,12 +163,17 @@ public class login extends javax.swing.JFrame {
                 bt_registro_alumnoMouseClicked(evt);
             }
         });
-        jPanel3.add(bt_registro_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
+        jPanel3.add(bt_registro_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 100, 40));
         jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
         jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
         jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
 
-        registro_alumno.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Nombre");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        jPanel3.add(tf_carrera_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 180, -1));
+
+        registro_alumno.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 400));
 
         plataforma_alumno.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -258,6 +265,11 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(bt_registro_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 200, 60));
 
         bt_login.setText("Iniciar Sesion");
+        bt_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_loginMouseClicked(evt);
+            }
+        });
         bt_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_loginActionPerformed(evt);
@@ -376,21 +388,22 @@ public class login extends javax.swing.JFrame {
 
     private void bt_registro_alumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registro_alumnoMouseClicked
         // TODO add your handling code here:
-        String nombre, user, pass, confirm;
+        String nombre, user, pass, confirm, carrera;
         nombre = tf_nombre_alumno.getText();
         user = tf_user_alumno.getText();
         pass = tf_password_alumno.getText();
         confirm = pf_password_alumno.getText();
+        carrera = tf_carrera_alumno.getText();
         int numCuenta = 1+r.nextInt(999999);
         if(pass.equals(confirm)){
-            Alumno x = new Alumno(numCuenta, nombre, user, pass);
+            Alumno x = new Alumno(numCuenta, carrera, nombre, user, pass);
             alumnos.add(x);
             Dba db = new Dba("./Universidad.accdb");
             db.conectar();
             try {
                 db.query.execute("INSERT INTO Alumnos"
-                        + " (Nombre,NumCuenta)"
-                        + " VALUES ('" + nombre + "', '" + numCuenta + "')");
+                        + " (Nombre,NumCuenta,Carrera)"
+                        + " VALUES ('" + nombre + "', '" + numCuenta + "', '" + nombre + "')");
             } catch (SQLException ex) {
                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -425,6 +438,10 @@ public class login extends javax.swing.JFrame {
             db.commit();
             JOptionPane.showMessageDialog(null, "Se ha creado exitosamente");
     }//GEN-LAST:event_bt_crudClaseActionPerformed
+
+    private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_loginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -481,6 +498,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -501,6 +519,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JFrame plataforma_maestro;
     private javax.swing.JFrame registro_alumno;
     private javax.swing.JFrame registro_maestro;
+    private javax.swing.JTextField tf_carrera_alumno;
     private javax.swing.JTextField tf_nombre_alumno;
     private javax.swing.JTextField tf_nombre_maestro;
     private javax.swing.JTextField tf_password;
