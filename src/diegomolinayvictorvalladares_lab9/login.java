@@ -16,6 +16,8 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+        this.pack();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,6 +29,12 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        registro_maestro = new javax.swing.JFrame();
+        registro_alumno = new javax.swing.JFrame();
+        plataforma_alumno = new javax.swing.JFrame();
+        plataforma_maestro = new javax.swing.JFrame();
+        plataforma_admin = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Contraseña = new javax.swing.JLabel();
@@ -36,29 +44,92 @@ public class login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        javax.swing.GroupLayout registro_maestroLayout = new javax.swing.GroupLayout(registro_maestro.getContentPane());
+        registro_maestro.getContentPane().setLayout(registro_maestroLayout);
+        registro_maestroLayout.setHorizontalGroup(
+            registro_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        registro_maestroLayout.setVerticalGroup(
+            registro_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout registro_alumnoLayout = new javax.swing.GroupLayout(registro_alumno.getContentPane());
+        registro_alumno.getContentPane().setLayout(registro_alumnoLayout);
+        registro_alumnoLayout.setHorizontalGroup(
+            registro_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        registro_alumnoLayout.setVerticalGroup(
+            registro_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout plataforma_alumnoLayout = new javax.swing.GroupLayout(plataforma_alumno.getContentPane());
+        plataforma_alumno.getContentPane().setLayout(plataforma_alumnoLayout);
+        plataforma_alumnoLayout.setHorizontalGroup(
+            plataforma_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        plataforma_alumnoLayout.setVerticalGroup(
+            plataforma_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout plataforma_maestroLayout = new javax.swing.GroupLayout(plataforma_maestro.getContentPane());
+        plataforma_maestro.getContentPane().setLayout(plataforma_maestroLayout);
+        plataforma_maestroLayout.setHorizontalGroup(
+            plataforma_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        plataforma_maestroLayout.setVerticalGroup(
+            plataforma_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout plataforma_adminLayout = new javax.swing.GroupLayout(plataforma_admin.getContentPane());
+        plataforma_admin.getContentPane().setLayout(plataforma_adminLayout);
+        plataforma_adminLayout.setHorizontalGroup(
+            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        plataforma_adminLayout.setVerticalGroup(
+            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("NeoBlackboard");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 23, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
+        Contraseña.setForeground(new java.awt.Color(0, 0, 0));
         Contraseña.setText("Contraseña");
-        getContentPane().add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        getContentPane().add(tf_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 246, -1));
-        getContentPane().add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 246, -1));
+        jPanel1.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jPanel1.add(tf_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 246, -1));
+        jPanel1.add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 246, -1));
 
         bt_registro_m.setText("Registrarse como Maestro");
-        getContentPane().add(bt_registro_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 170, 60));
+        jPanel1.add(bt_registro_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 200, 60));
 
         jButton2.setText("Iniciar Sesion");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 160, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 160, 40));
 
         jButton3.setText("Registrarse como Alumno");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 190, 60));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 190, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,6 +165,7 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
+                
             }
         });
     }
@@ -105,7 +177,15 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JFrame plataforma_admin;
+    private javax.swing.JFrame plataforma_alumno;
+    private javax.swing.JFrame plataforma_maestro;
+    private javax.swing.JFrame registro_alumno;
+    private javax.swing.JFrame registro_maestro;
     private javax.swing.JTextField tf_password;
     private javax.swing.JTextField tf_username;
     // End of variables declaration//GEN-END:variables
+    String username_admin = "admin";
+    String password_admin = "admin1234";
 }
