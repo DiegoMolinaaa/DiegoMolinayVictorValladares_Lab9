@@ -19,6 +19,11 @@ public class Alumno extends Usuario {
     public Alumno() {
     }
 
+    public Alumno(int numCuenta, String nombre, String user, String pass) {
+        super(nombre, user, pass);
+        this.numCuenta = numCuenta;
+    }
+
     public Alumno(int numCuenta, String carrera, String nombre, String user, String pass) {
         super(nombre, user, pass);
         this.numCuenta = numCuenta;
