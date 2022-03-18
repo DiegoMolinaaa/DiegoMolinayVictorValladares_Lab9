@@ -76,7 +76,7 @@ public class login extends javax.swing.JFrame {
         tf_username = new javax.swing.JTextField();
         tf_password = new javax.swing.JTextField();
         bt_registro_m = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_login = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         registro_maestro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,8 +237,13 @@ public class login extends javax.swing.JFrame {
         });
         jPanel1.add(bt_registro_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 200, 60));
 
-        jButton2.setText("Iniciar Sesion");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 160, 40));
+        bt_login.setText("Iniciar Sesion");
+        bt_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_loginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bt_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 160, 40));
 
         jButton3.setText("Registrarse como Alumno");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,6 +321,43 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_registrarse_maestroMouseClicked
 
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
+        // TODO add your handling code here:
+        String user, pass;
+        user = tf_username.getText();
+        pass = tf_password.getText();
+        boolean entraA = false;
+        boolean entraM = false;
+        if(user.equals(username_admin) && pass.equals(password_admin)){
+            plataforma_admin.setVisible(true);
+        }
+        else{
+            for (Alumno alumno : alumnos) {
+                if(alumno.getUser().equals(user) && alumno.getPass().equals(pass)){
+                    entraA = true;
+                    break;
+                }
+            }
+            if(entraA==false){
+                for (Maestro maestro : maestros) {
+                    if(maestro.getUser().equals(user) && maestro.getPass().equals(pass)){
+                        entraM = true;
+                        break;
+                    }
+                }
+                if(entraM ==true){
+                    plataforma_maestro.setVisible(true);
+                }
+            }
+            else if(entraA==true){
+                plataforma_alumno.setVisible(true);
+            }
+            else if(entraA == false && entraM == false){
+                JOptionPane.showMessageDialog(null, "Usuario y/o contrasena incorrecta");
+            }
+        }
+    }//GEN-LAST:event_bt_loginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,11 +400,11 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_crudClase;
     private javax.swing.JButton bt_crudExamen;
     private javax.swing.JButton bt_crudPregunta;
+    private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
