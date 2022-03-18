@@ -58,6 +58,11 @@ public class login extends javax.swing.JFrame {
         plataforma_alumno = new javax.swing.JFrame();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
+        bt_crudExamen = new javax.swing.JButton();
+        bt_crudClase = new javax.swing.JButton();
+        bt_verClases = new javax.swing.JButton();
+        bt_crudPregunta = new javax.swing.JButton();
+        bt_Calificaciones = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -136,11 +141,14 @@ public class login extends javax.swing.JFrame {
         jPanel3.add(tf_nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
         jButton1.setText("Registrarse");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
         jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
         jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
-
-        pf_password_alumno.setText("jPasswordField1");
         jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
 
         registro_alumno.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
@@ -167,16 +175,22 @@ public class login extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout plataforma_adminLayout = new javax.swing.GroupLayout(plataforma_admin.getContentPane());
-        plataforma_admin.getContentPane().setLayout(plataforma_adminLayout);
-        plataforma_adminLayout.setHorizontalGroup(
-            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        plataforma_adminLayout.setVerticalGroup(
-            plataforma_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        plataforma_admin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bt_crudExamen.setText("Crear Examen");
+        plataforma_admin.getContentPane().add(bt_crudExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 270, 40));
+
+        bt_crudClase.setText("Crear Clase");
+        plataforma_admin.getContentPane().add(bt_crudClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 270, 50));
+
+        bt_verClases.setText("Ver Clases");
+        plataforma_admin.getContentPane().add(bt_verClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 270, 60));
+
+        bt_crudPregunta.setText("Crear Pregunta");
+        plataforma_admin.getContentPane().add(bt_crudPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 270, 50));
+
+        bt_Calificaciones.setText("Ir a Centro de Calificaciones");
+        plataforma_admin.getContentPane().add(bt_Calificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 260, 50));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -237,6 +251,10 @@ public class login extends javax.swing.JFrame {
         registro_alumno.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -275,8 +293,13 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
+    private javax.swing.JButton bt_Calificaciones;
+    private javax.swing.JButton bt_crudClase;
+    private javax.swing.JButton bt_crudExamen;
+    private javax.swing.JButton bt_crudPregunta;
     private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_m;
+    private javax.swing.JButton bt_verClases;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
