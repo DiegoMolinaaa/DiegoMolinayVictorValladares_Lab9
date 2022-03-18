@@ -7,13 +7,16 @@ package diegomolinayvictorvalladares_lab9;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import java.util.Random;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author diego
  */
 public class login extends javax.swing.JFrame {
-
+    Random r = new Random();
     /**
      * Creates new form login
      */
@@ -53,8 +56,8 @@ public class login extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        tf_nombre_cliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        tf_nombre_alumno = new javax.swing.JTextField();
+        bt_registro_alumno = new javax.swing.JButton();
         tf_user_alumno = new javax.swing.JTextField();
         tf_password_alumno = new javax.swing.JTextField();
         pf_password_alumno = new javax.swing.JPasswordField();
@@ -69,6 +72,7 @@ public class login extends javax.swing.JFrame {
         bt_verClases = new javax.swing.JButton();
         bt_crudPregunta = new javax.swing.JButton();
         bt_Calificaciones = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,15 +153,15 @@ public class login extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Nombre");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-        jPanel3.add(tf_nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        jPanel3.add(tf_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
-        jButton1.setText("Registrarse");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_registro_alumno.setText("Registrarse");
+        bt_registro_alumno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                bt_registro_alumnoMouseClicked(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
+        jPanel3.add(bt_registro_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
         jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
         jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
         jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
@@ -197,6 +201,11 @@ public class login extends javax.swing.JFrame {
         plataforma_admin.getContentPane().add(bt_crudExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 270, 40));
 
         bt_crudClase.setText("Crear Clase");
+        bt_crudClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crudClaseActionPerformed(evt);
+            }
+        });
         plataforma_admin.getContentPane().add(bt_crudClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 270, 50));
 
         bt_verClases.setText("Ver Clases");
@@ -207,6 +216,17 @@ public class login extends javax.swing.JFrame {
 
         bt_Calificaciones.setText("Ir a Centro de Calificaciones");
         plataforma_admin.getContentPane().add(bt_Calificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 260, 50));
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -271,10 +291,6 @@ public class login extends javax.swing.JFrame {
         registro_alumno.setLocationRelativeTo(this);
         registro_alumno.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
 
     private void bt_registrarse_maestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarse_maestroMouseClicked
         String nombre;
@@ -358,6 +374,58 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_loginActionPerformed
 
+    private void bt_registro_alumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registro_alumnoMouseClicked
+        // TODO add your handling code here:
+        String nombre, user, pass, confirm;
+        nombre = tf_nombre_alumno.getText();
+        user = tf_user_alumno.getText();
+        pass = tf_password_alumno.getText();
+        confirm = pf_password_alumno.getText();
+        int numCuenta = 1+r.nextInt(999999);
+        if(pass.equals(confirm)){
+            Alumno x = new Alumno(numCuenta, nombre, user, pass);
+            alumnos.add(x);
+            Dba db = new Dba("./Universidad.accdb");
+            db.conectar();
+            try {
+                db.query.execute("INSERT INTO Alumnos"
+                        + " (Nombre,NumCuenta)"
+                        + " VALUES ('" + nombre + "', '" + numCuenta + "')");
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            db.commit();
+            JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
+            db.desconectar();
+            tf_nombre_alumno.setText("");
+            tf_user_alumno.setText("");
+            tf_password_alumno.setText("");
+            pf_password_alumno.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
+        }
+    }//GEN-LAST:event_bt_registro_alumnoMouseClicked
+
+    private void bt_crudClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crudClaseActionPerformed
+        // TODO add your handling code here:
+        String nomClase = JOptionPane.showInputDialog(null, "Nombre de la Clase");
+        int idClase = Integer.parseInt(JOptionPane.showInputDialog("ID de la Clase"));
+        Clase c = new Clase(nomClase, idClase);
+        clases.add(c);
+        Dba db = new Dba("./Universidad.accdb");
+            db.conectar();
+            try {
+                db.query.execute("INSERT INTO Clases"
+                        + " (Nombre,IDclase)"
+                        + " VALUES ('" + nomClase + "', '" + idClase + "')");
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            db.commit();
+            JOptionPane.showMessageDialog(null, "Se ha creado exitosamente");
+    }//GEN-LAST:event_bt_crudClaseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,10 +470,11 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_crudPregunta;
     private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarse_maestro;
+    private javax.swing.JButton bt_registro_alumno;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -432,7 +501,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JFrame plataforma_maestro;
     private javax.swing.JFrame registro_alumno;
     private javax.swing.JFrame registro_maestro;
-    private javax.swing.JTextField tf_nombre_cliente;
+    private javax.swing.JTextField tf_nombre_alumno;
     private javax.swing.JTextField tf_nombre_maestro;
     private javax.swing.JTextField tf_password;
     private javax.swing.JTextField tf_password_alumno;
@@ -446,4 +515,5 @@ public class login extends javax.swing.JFrame {
     String password_admin = "admin1234";
     ArrayList <Alumno> alumnos = new ArrayList ();
     ArrayList <Maestro> maestros = new ArrayList ();
+    ArrayList<Clase> clases = new ArrayList();
 }
