@@ -29,6 +29,10 @@ public class Alumno extends Usuario {
         this.numCuenta = numCuenta;
         this.carrera = carrera;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f42cf2e1fc01733e9e02803c54d45b18f554d5dd
 
     public int getNumCuenta() {
         return numCuenta;
