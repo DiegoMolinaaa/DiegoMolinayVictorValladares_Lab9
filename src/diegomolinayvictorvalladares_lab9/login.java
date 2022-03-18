@@ -70,36 +70,6 @@ public class login extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         label_nombre_alumno = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        cb_clases = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        F1 = new javax.swing.JRadioButton();
-        V1 = new javax.swing.JRadioButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        label_q1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        label_q2 = new javax.swing.JLabel();
-        label_q3 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        label_q4 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        label_q5 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        V2 = new javax.swing.JRadioButton();
-        F2 = new javax.swing.JRadioButton();
-        V3 = new javax.swing.JRadioButton();
-        F3 = new javax.swing.JRadioButton();
-        V4 = new javax.swing.JRadioButton();
-        F4 = new javax.swing.JRadioButton();
-        V5 = new javax.swing.JRadioButton();
-        F5 = new javax.swing.JRadioButton();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
         bt_crudExamen = new javax.swing.JButton();
@@ -221,100 +191,8 @@ public class login extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("0:00 minutos");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
-
-        jButton1.setText("Modificar");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("1.-");
-        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("2.-");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("3.-");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("4.-");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setText("5.-");
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
-
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Clase");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        jPanel4.add(cb_clases, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 190, -1));
-
-        jButton2.setText("Empezar examen");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("Bienvenido: ");
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        F1.setForeground(new java.awt.Color(0, 0, 0));
-        F1.setText("F");
-        jPanel4.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
-
-        V1.setForeground(new java.awt.Color(0, 0, 0));
-        V1.setText("V");
-        jPanel4.add(V1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 380, 20));
-        jPanel4.add(label_q1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 380, 30));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 380, 20));
-        jPanel4.add(label_q2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 380, 20));
-        jPanel4.add(label_q3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 380, 20));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 380, 20));
-        jPanel4.add(label_q4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 380, 20));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 380, 20));
-        jPanel4.add(label_q5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 380, 20));
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 380, 20));
-
-        V2.setForeground(new java.awt.Color(0, 0, 0));
-        V2.setText("V");
-        jPanel4.add(V2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
-
-        F2.setForeground(new java.awt.Color(0, 0, 0));
-        F2.setText("F");
-        jPanel4.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
-
-        V3.setForeground(new java.awt.Color(0, 0, 0));
-        V3.setText("V");
-        jPanel4.add(V3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
-
-        F3.setForeground(new java.awt.Color(0, 0, 0));
-        F3.setText("F");
-        jPanel4.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
-
-        V4.setForeground(new java.awt.Color(0, 0, 0));
-        V4.setText("V");
-        jPanel4.add(V4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
-
-        F4.setForeground(new java.awt.Color(0, 0, 0));
-        F4.setText("F");
-        jPanel4.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
-
-        V5.setForeground(new java.awt.Color(0, 0, 0));
-        V5.setText("V");
-        jPanel4.add(V5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
-
-        F5.setForeground(new java.awt.Color(0, 0, 0));
-        F5.setText("F");
-        jPanel4.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+        jLabel15.setText("Bienvenido: ");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         plataforma_alumno.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 410));
 
@@ -655,16 +533,6 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
-    private javax.swing.JRadioButton F1;
-    private javax.swing.JRadioButton F2;
-    private javax.swing.JRadioButton F3;
-    private javax.swing.JRadioButton F4;
-    private javax.swing.JRadioButton F5;
-    private javax.swing.JRadioButton V1;
-    private javax.swing.JRadioButton V2;
-    private javax.swing.JRadioButton V3;
-    private javax.swing.JRadioButton V4;
-    private javax.swing.JRadioButton V5;
     private javax.swing.JButton bt_Calificaciones;
     private javax.swing.JButton bt_crearExamen;
     private javax.swing.JButton bt_crudClase;
@@ -675,29 +543,16 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_registro_alumno;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
-<<<<<<< HEAD
     private javax.swing.JComboBox<String> cb_idClases;
-=======
-    private javax.swing.JComboBox<String> cb_clases;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
->>>>>>> a8238e2bffd2a84b3a43db876f4263c85fb70756
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -709,21 +564,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-<<<<<<< HEAD
     private javax.swing.JDialog jd_crearExamen;
-=======
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
->>>>>>> a8238e2bffd2a84b3a43db876f4263c85fb70756
     private javax.swing.JLabel label_nombre_alumno;
-    private javax.swing.JLabel label_q1;
-    private javax.swing.JLabel label_q2;
-    private javax.swing.JLabel label_q3;
-    private javax.swing.JLabel label_q4;
-    private javax.swing.JLabel label_q5;
     private javax.swing.JPasswordField pf_password_alumno;
     private javax.swing.JPasswordField pf_password_maestro;
     private javax.swing.JFrame plataforma_admin;
