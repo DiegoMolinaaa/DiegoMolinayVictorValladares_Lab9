@@ -24,6 +24,12 @@ public class Clase {
         this.idEx2 = idEx2;
     }
 
+    public Clase(String nombre, int idClase) {
+        this.nombre = nombre;
+        this.idClase = idClase;
+    }
+    
+
     public String getNombre() {
         return nombre;
     }
