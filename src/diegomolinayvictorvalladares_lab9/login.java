@@ -30,7 +30,31 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         registro_maestro = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        bt_registrarse_maestro = new javax.swing.JButton();
+        tf_nombre_maestro = new javax.swing.JTextField();
+        tf_user_maestro = new javax.swing.JTextField();
+        tf_password_maestro = new javax.swing.JTextField();
+        tf_rrhh = new javax.swing.JTextField();
+        pf_password_maestro = new javax.swing.JPasswordField();
         registro_alumno = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        tf_nombre_cliente = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        tf_user_alumno = new javax.swing.JTextField();
+        tf_password_alumno = new javax.swing.JTextField();
+        pf_password_alumno = new javax.swing.JPasswordField();
         plataforma_alumno = new javax.swing.JFrame();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
@@ -44,27 +68,82 @@ public class login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout registro_maestroLayout = new javax.swing.GroupLayout(registro_maestro.getContentPane());
-        registro_maestro.getContentPane().setLayout(registro_maestroLayout);
-        registro_maestroLayout.setHorizontalGroup(
-            registro_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        registro_maestroLayout.setVerticalGroup(
-            registro_maestroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        registro_maestro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout registro_alumnoLayout = new javax.swing.GroupLayout(registro_alumno.getContentPane());
-        registro_alumno.getContentPane().setLayout(registro_alumnoLayout);
-        registro_alumnoLayout.setHorizontalGroup(
-            registro_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        registro_alumnoLayout.setVerticalGroup(
-            registro_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Registrarse como maestro");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Confirmar Contraseña");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("RRHH");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre de usuario");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Contraseña");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Nombre");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+
+        bt_registrarse_maestro.setText("Registrarse");
+        jPanel2.add(bt_registrarse_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        jPanel2.add(tf_nombre_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 190, -1));
+        jPanel2.add(tf_user_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, -1));
+        jPanel2.add(tf_password_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, -1));
+        jPanel2.add(tf_rrhh, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 190, -1));
+        jPanel2.add(pf_password_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 190, -1));
+
+        registro_maestro.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+
+        registro_alumno.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Registrarse como alumno");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Confirmar Contraseña");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Nombre de usuario");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Contraseña");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Nombre");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        jPanel3.add(tf_nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+
+        jButton1.setText("Registrarse");
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
+        jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
+        jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
+
+        pf_password_alumno.setText("jPasswordField1");
+        jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
+
+        registro_alumno.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         javax.swing.GroupLayout plataforma_alumnoLayout = new javax.swing.GroupLayout(plataforma_alumno.getContentPane());
         plataforma_alumno.getContentPane().setLayout(plataforma_alumnoLayout);
@@ -121,18 +200,42 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 246, -1));
 
         bt_registro_m.setText("Registrarse como Maestro");
+        bt_registro_m.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registro_mMouseClicked(evt);
+            }
+        });
         jPanel1.add(bt_registro_m, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 200, 60));
 
         jButton2.setText("Iniciar Sesion");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 160, 40));
 
         jButton3.setText("Registrarse como Alumno");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 190, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_registro_mMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registro_mMouseClicked
+        this.setVisible(false);
+        registro_maestro.pack();
+        registro_maestro.setLocationRelativeTo(this);
+        registro_maestro.setVisible(true);
+    }//GEN-LAST:event_bt_registro_mMouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        this.setVisible(false);
+        registro_alumno.pack();
+        registro_alumno.setLocationRelativeTo(this);
+        registro_alumno.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -172,18 +275,42 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
+    private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_m;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField pf_password_alumno;
+    private javax.swing.JPasswordField pf_password_maestro;
     private javax.swing.JFrame plataforma_admin;
     private javax.swing.JFrame plataforma_alumno;
     private javax.swing.JFrame plataforma_maestro;
     private javax.swing.JFrame registro_alumno;
     private javax.swing.JFrame registro_maestro;
+    private javax.swing.JTextField tf_nombre_cliente;
+    private javax.swing.JTextField tf_nombre_maestro;
     private javax.swing.JTextField tf_password;
+    private javax.swing.JTextField tf_password_alumno;
+    private javax.swing.JTextField tf_password_maestro;
+    private javax.swing.JTextField tf_rrhh;
+    private javax.swing.JTextField tf_user_alumno;
+    private javax.swing.JTextField tf_user_maestro;
     private javax.swing.JTextField tf_username;
     // End of variables declaration//GEN-END:variables
     String username_admin = "admin";
