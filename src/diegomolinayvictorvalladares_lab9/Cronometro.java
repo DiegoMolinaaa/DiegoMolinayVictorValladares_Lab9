@@ -7,11 +7,9 @@ public class Cronometro extends Thread{
     private boolean avanzar;
     private boolean vive;
     private JLabel segundos;
-    private JLabel minutos;
     
-    public Cronometro(JLabel segundos, JLabel minutos) {
+    public Cronometro(JLabel segundos) {
         this.segundos =segundos;
-        this.minutos = minutos;
         avanzar = true;
         vive = true;
     }
@@ -34,11 +32,11 @@ public class Cronometro extends Thread{
                 int i = 0; 
                 int f = 0;
                 while (i < 60){
-                    segundos.setText(i+"");
+                    
+                    segundos.setText(f+ ":"+i+" minutos");
                     if (i == 59){
                         f++;
                         total += f;
-                        minutos.setText(f+"");
                         JOptionPane.showMessageDialog(null, "Han pasado " + total + " minutos");
                     }
                 }
