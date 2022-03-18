@@ -5,10 +5,53 @@
  */
 package diegomolinayvictorvalladares_lab9;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author diego
  */
-public class Alumno {
+public class Alumno extends Usuario {
+    private int numCuenta;
+    private String carrera;
+    private ArrayList<Clase> clases = new ArrayList();
+
+    public Alumno() {
+    }
+
+    public Alumno(int numCuenta, String carrera, String nombre, String user, String pass) {
+        super(nombre, user, pass);
+        this.numCuenta = numCuenta;
+        this.carrera = carrera;
+    }
+
+    public int getNumCuenta() {
+        return numCuenta;
+    }
+
+    public void setNumCuenta(int numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public ArrayList<Clase> getClases() {
+        return clases;
+    }
+
+    public void setClases(ArrayList<Clase> clases) {
+        this.clases = clases;
+    }
+
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
     
 }
