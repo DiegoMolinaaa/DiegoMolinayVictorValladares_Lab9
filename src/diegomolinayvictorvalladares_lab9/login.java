@@ -290,7 +290,7 @@ public class login extends javax.swing.JFrame {
                 Maestro x = new Maestro (rrhh, nombre, user, Password);
                 maestros.add(x);
                 
-                Dba db = new Dba("./Universidad.mdb");
+                Dba db = new Dba("./Universidad.accdb");
                 db.conectar();
                 
                 db.query.execute("INSERT INTO Maestros"
