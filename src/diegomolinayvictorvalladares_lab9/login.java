@@ -6,9 +6,6 @@
 package diegomolinayvictorvalladares_lab9;
 
 import java.util.ArrayList;
-import java.util.Random;
-import javax.swing.JOptionPane;
-import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author diego
  */
 public class login extends javax.swing.JFrame {
-    Random r = new Random();
+
     /**
      * Creates new form login
      */
@@ -56,8 +53,8 @@ public class login extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        tf_nombre_alumno = new javax.swing.JTextField();
-        bt_registrarse_alumno = new javax.swing.JButton();
+        tf_nombre_cliente = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         tf_user_alumno = new javax.swing.JTextField();
         tf_password_alumno = new javax.swing.JTextField();
         pf_password_alumno = new javax.swing.JPasswordField();
@@ -113,15 +110,9 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
         bt_registrarse_maestro.setText("Registrarse");
-<<<<<<< HEAD
-        bt_registrarse_maestro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_registrarse_maestroActionPerformed(evt);
-=======
         bt_registrarse_maestro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_registrarse_maestroMouseClicked(evt);
->>>>>>> 2c498a9f021ffb9bc89d90eaf580740ea3320721
             }
         });
         jPanel2.add(bt_registrarse_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
@@ -158,20 +149,15 @@ public class login extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Nombre");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-        jPanel3.add(tf_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        jPanel3.add(tf_nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
-        bt_registrarse_alumno.setText("Registrarse");
-        bt_registrarse_alumno.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton1.setText("Registrarse");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_registrarse_alumnoMouseClicked(evt);
+                jButton1MouseClicked(evt);
             }
         });
-        bt_registrarse_alumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_registrarse_alumnoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(bt_registrarse_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
         jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
         jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
         jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
@@ -281,73 +267,9 @@ public class login extends javax.swing.JFrame {
         registro_alumno.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void bt_registrarse_alumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarse_alumnoMouseClicked
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_bt_registrarse_alumnoMouseClicked
-
-    private void bt_registrarse_maestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarse_maestroActionPerformed
-        // TODO add your handling code here:
-        String nombre, user, pass="";
-        int rrhh;
-        nombre = tf_nombre_maestro.getText();
-        user = tf_user_maestro.getText();
-        if(tf_password_maestro.getText() == pf_password_maestro.getText()){
-            pass = pf_password_maestro.getText();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
-        }
-        rrhh = Integer.parseInt(tf_rrhh.getText());
-        usuarios.add(new Maestro(rrhh, nombre, user, pass));
-        Dba db = new Dba("./Lab9_dba_prueba.mdb");
-        db.conectar();
-        try {
-            db.query.execute("INSERT INTO Alumnos"
-                    + " (Nombre,RRHH)"
-                    + " VALUES ('" + nombre + "', '" + rrhh + "')");
-            db.commit();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        db.desconectar();
-        JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
-        tf_nombre_maestro.setText("");
-        tf_user_maestro.setText("");
-        tf_password_maestro.setText("");
-        pf_password_maestro.setText("");
-        tf_rrhh.setText("");
-    }//GEN-LAST:event_bt_registrarse_maestroActionPerformed
-
-    private void bt_registrarse_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarse_alumnoActionPerformed
-        // TODO add your handling code here:
-        String nombre, user, pass="";
-        nombre = tf_nombre_alumno.getText();
-        user = tf_user_alumno.getText();
-        if(tf_password_alumno.getText() == pf_password_alumno.getText()){
-            pass = pf_password_alumno.getText();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
-        }
-        int numCuenta = 1+r.nextInt(9999);
-        usuarios.add(new Alumno(numCuenta, nombre, user, pass));
-        Dba db = new Dba("./Lab9_dba_prueba.mdb");
-        db.conectar();
-        try {
-            db.query.execute("INSERT INTO Alumnos"
-                    + " (Nombre,# de Cuenta)"
-                    + " VALUES ('" + nombre + "', '" + numCuenta + "')");
-            db.commit();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        db.desconectar();
-        JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
-        tf_nombre_alumno.setText("");
-        tf_user_alumno.setText("");
-        tf_password_alumno.setText("");
-        pf_password_alumno.setText("");
-    }//GEN-LAST:event_bt_registrarse_alumnoActionPerformed
+    }//GEN-LAST:event_jButton1MouseClicked
 
     private void bt_registrarse_maestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarse_maestroMouseClicked
         String nombre;
@@ -426,10 +348,10 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_crudClase;
     private javax.swing.JButton bt_crudExamen;
     private javax.swing.JButton bt_crudPregunta;
-    private javax.swing.JButton bt_registrarse_alumno;
     private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -458,7 +380,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JFrame plataforma_maestro;
     private javax.swing.JFrame registro_alumno;
     private javax.swing.JFrame registro_maestro;
-    private javax.swing.JTextField tf_nombre_alumno;
+    private javax.swing.JTextField tf_nombre_cliente;
     private javax.swing.JTextField tf_nombre_maestro;
     private javax.swing.JTextField tf_password;
     private javax.swing.JTextField tf_password_alumno;
@@ -470,7 +392,6 @@ public class login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     String username_admin = "admin";
     String password_admin = "admin1234";
-    ArrayList<Usuario> usuarios = new ArrayList();
     ArrayList <Alumno> alumnos = new ArrayList ();
     ArrayList <Maestro> maestros = new ArrayList ();
 }
