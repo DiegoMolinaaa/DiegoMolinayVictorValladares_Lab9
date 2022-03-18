@@ -5,10 +5,42 @@
  */
 package diegomolinayvictorvalladares_lab9;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author diego
  */
 public class Examen {
+    private int idClase;
+    private ArrayList<Pregunta> preguntas = new ArrayList();
+
+    public Examen() {
+    }
+
+    public Examen(int idClase) {
+        this.idClase = idClase;
+    }
+
+    public int getIdClase() {
+        return idClase;
+    }
+
+    public void setIdClase(int idClase) {
+        this.idClase = idClase;
+    }
+
+    public ArrayList<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(ArrayList<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
+    @Override
+    public String toString() {
+        return idClase+"";
+    }    
     
 }
