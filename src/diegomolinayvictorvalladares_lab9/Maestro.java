@@ -9,6 +9,28 @@ package diegomolinayvictorvalladares_lab9;
  *
  * @author diego
  */
-public class Maestro {
+public class Maestro extends Usuario {
+    private int rrhh;
+
+    public Maestro() {
+    }
+
+    public Maestro(int rrhh, String nombre, String user, String pass) {
+        super(nombre, user, pass);
+        this.rrhh = rrhh;
+    }
+
+    public int getRrhh() {
+        return rrhh;
+    }
+
+    public void setRrhh(int rrhh) {
+        this.rrhh = rrhh;
+    }
+
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
     
 }
