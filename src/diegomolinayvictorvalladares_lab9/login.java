@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diego
@@ -60,6 +62,9 @@ public class login extends javax.swing.JFrame {
         tf_password_alumno = new javax.swing.JTextField();
         pf_password_alumno = new javax.swing.JPasswordField();
         plataforma_alumno = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        label_nombre_alumno = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
         bt_crudExamen = new javax.swing.JButton();
@@ -108,9 +113,15 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
         bt_registrarse_maestro.setText("Registrarse");
+<<<<<<< HEAD
         bt_registrarse_maestro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_registrarse_maestroActionPerformed(evt);
+=======
+        bt_registrarse_maestro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registrarse_maestroMouseClicked(evt);
+>>>>>>> 2c498a9f021ffb9bc89d90eaf580740ea3320721
             }
         });
         jPanel2.add(bt_registrarse_maestro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
@@ -167,16 +178,21 @@ public class login extends javax.swing.JFrame {
 
         registro_alumno.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
-        javax.swing.GroupLayout plataforma_alumnoLayout = new javax.swing.GroupLayout(plataforma_alumno.getContentPane());
-        plataforma_alumno.getContentPane().setLayout(plataforma_alumnoLayout);
-        plataforma_alumnoLayout.setHorizontalGroup(
-            plataforma_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        plataforma_alumnoLayout.setVerticalGroup(
-            plataforma_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        plataforma_alumno.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_nombre_alumno.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        label_nombre_alumno.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(label_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 200, 30));
+
+        jLabel15.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Bienvenido: ");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        plataforma_alumno.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 410));
 
         javax.swing.GroupLayout plataforma_maestroLayout = new javax.swing.GroupLayout(plataforma_maestro.getContentPane());
         plataforma_maestro.getContentPane().setLayout(plataforma_maestroLayout);
@@ -333,6 +349,41 @@ public class login extends javax.swing.JFrame {
         pf_password_alumno.setText("");
     }//GEN-LAST:event_bt_registrarse_alumnoActionPerformed
 
+    private void bt_registrarse_maestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarse_maestroMouseClicked
+        String nombre;
+        String user;
+        String Password;
+        String confirm;
+        int rrhh;
+        
+        try{
+            nombre = tf_nombre_maestro.getText();
+            user = tf_user_maestro.getText();
+            Password = tf_password_maestro.getText();
+            confirm = pf_password_maestro.getText();
+            rrhh = Integer.parseInt(tf_rrhh.getText());
+            if (!(confirm.equals(Password))){
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+            }else{
+                Maestro x = new Maestro (rrhh, nombre, user, Password);
+                maestros.add(x);
+                
+                Dba db = new Dba("./Universidad.mdb");
+                db.conectar();
+                
+                db.query.execute("INSERT INTO Maestros"
+                    + " (Nombre,RRHH)"
+                    + " VALUES ('" + nombre + "', '" + rrhh + "')");
+                db.commit();
+                
+                JOptionPane.showMessageDialog(null, "Se ha creado el maestro exitosamente");
+                db.desconectar();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
+    }//GEN-LAST:event_bt_registrarse_maestroMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +437,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -397,6 +449,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel label_nombre_alumno;
     private javax.swing.JPasswordField pf_password_alumno;
     private javax.swing.JPasswordField pf_password_maestro;
     private javax.swing.JFrame plataforma_admin;
@@ -417,4 +471,6 @@ public class login extends javax.swing.JFrame {
     String username_admin = "admin";
     String password_admin = "admin1234";
     ArrayList<Usuario> usuarios = new ArrayList();
+    ArrayList <Alumno> alumnos = new ArrayList ();
+    ArrayList <Maestro> maestros = new ArrayList ();
 }
