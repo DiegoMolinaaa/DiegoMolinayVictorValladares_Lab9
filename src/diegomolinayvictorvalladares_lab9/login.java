@@ -56,13 +56,8 @@ public class login extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-<<<<<<< HEAD
         tf_nombre_alumno = new javax.swing.JTextField();
         bt_registro_alumno = new javax.swing.JButton();
-=======
-        tf_nombre_cliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
->>>>>>> 8da7fce2af5553f94de9b949a6963424d29aa04f
         tf_user_alumno = new javax.swing.JTextField();
         tf_password_alumno = new javax.swing.JTextField();
         pf_password_alumno = new javax.swing.JPasswordField();
@@ -158,9 +153,8 @@ public class login extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Nombre");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-        jPanel3.add(tf_nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
+        jPanel3.add(tf_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 180, -1));
 
-<<<<<<< HEAD
         bt_registro_alumno.setText("Registrarse");
         bt_registro_alumno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,15 +162,6 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(bt_registro_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
-=======
-        jButton1.setText("Registrarse");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 100, 40));
->>>>>>> 8da7fce2af5553f94de9b949a6963424d29aa04f
         jPanel3.add(tf_user_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 180, -1));
         jPanel3.add(tf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, -1));
         jPanel3.add(pf_password_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 180, -1));
@@ -483,19 +468,11 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_crudClase;
     private javax.swing.JButton bt_crudExamen;
     private javax.swing.JButton bt_crudPregunta;
-<<<<<<< HEAD
     private javax.swing.JButton bt_login;
-=======
->>>>>>> 8da7fce2af5553f94de9b949a6963424d29aa04f
     private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_alumno;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
-<<<<<<< HEAD
-=======
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
->>>>>>> 8da7fce2af5553f94de9b949a6963424d29aa04f
     private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -524,7 +501,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JFrame plataforma_maestro;
     private javax.swing.JFrame registro_alumno;
     private javax.swing.JFrame registro_maestro;
-    private javax.swing.JTextField tf_nombre_cliente;
+    private javax.swing.JTextField tf_nombre_alumno;
     private javax.swing.JTextField tf_nombre_maestro;
     private javax.swing.JTextField tf_password;
     private javax.swing.JTextField tf_password_alumno;
