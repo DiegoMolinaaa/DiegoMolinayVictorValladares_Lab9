@@ -286,36 +286,48 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_registrarse_alumnoMouseClicked
 
     private void bt_registrarse_maestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarse_maestroActionPerformed
-        // TODO add your handling code here:
-        String nombre, user, pass="";
+        String nombre;
+        String user;
+        String Password;
+        String confirm;
         int rrhh;
-        nombre = tf_nombre_maestro.getText();
-        user = tf_user_maestro.getText();
-        if(tf_password_maestro.getText() == pf_password_maestro.getText()){
-            pass = pf_password_maestro.getText();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
-        }
-        rrhh = Integer.parseInt(tf_rrhh.getText());
-        usuarios.add(new Maestro(rrhh, nombre, user, pass));
-        Dba db = new Dba("./Lab9_dba_prueba.mdb");
-        db.conectar();
-        try {
-            db.query.execute("INSERT INTO Alumnos"
+        
+        try{
+            nombre = tf_nombre_maestro.getText();
+            user = tf_user_maestro.getText();
+            Password = tf_password_maestro.getText();
+            confirm = pf_password_maestro.getText();
+            rrhh = Integer.parseInt(tf_rrhh.getText());
+            if (!(confirm.equals(Password))){
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+            }else{
+                Maestro x = new Maestro (rrhh, nombre, user, Password);
+                maestros.add(x);
+                
+                Dba db = new Dba("./Universidad.accdb");
+                db.conectar();
+                
+                db.query.execute("INSERT INTO Maestros"
                     + " (Nombre,RRHH)"
                     + " VALUES ('" + nombre + "', '" + rrhh + "')");
-            db.commit();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+                db.commit();
+                
+                JOptionPane.showMessageDialog(null, "Se ha creado el maestro exitosamente");
+                db.desconectar();
+                
+                tf_nombre_maestro.setText("");
+                tf_user_maestro.setText("");
+                tf_password_maestro.setText("");
+                pf_password_maestro.setText("");
+                
+                registro_maestro.setVisible(false);
+                this.pack();
+                this.setLocationRelativeTo(null);
+                this.setVisible(true);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
         }
-        db.desconectar();
-        JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
-        tf_nombre_maestro.setText("");
-        tf_user_maestro.setText("");
-        tf_password_maestro.setText("");
-        pf_password_maestro.setText("");
-        tf_rrhh.setText("");
     }//GEN-LAST:event_bt_registrarse_maestroActionPerformed
 
     private void bt_registrarse_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarse_alumnoActionPerformed
@@ -329,9 +341,9 @@ public class login extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
         }
-        int numCuenta = 1+r.nextInt(9999);
+        int numCuenta = 1+r.nextInt(999999);
         usuarios.add(new Alumno(numCuenta, nombre, user, pass));
-        Dba db = new Dba("./Lab9_dba_prueba.mdb");
+        Dba db = new Dba("./Universidad.accdb");
         db.conectar();
         try {
             db.query.execute("INSERT INTO Alumnos"
