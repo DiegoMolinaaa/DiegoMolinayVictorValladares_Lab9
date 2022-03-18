@@ -1,4 +1,4 @@
-package basedatos;
+package diegomolinayvictorvalladares_lab9;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
