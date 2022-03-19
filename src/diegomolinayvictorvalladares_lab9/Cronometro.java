@@ -18,6 +18,22 @@ public class Cronometro extends Thread{
         f = 0;
     }
 
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getF() {
+        return f;
+    }
+
+    public void setF(int f) {
+        this.f = f;
+    }
+
     
     public void setAvanzar(boolean avanzar) {
         this.avanzar = avanzar;
@@ -31,22 +47,18 @@ public class Cronometro extends Thread{
     public void run() {
         int total = 0;
         while (vive) {
-            while (avanzar) {
-                if(avanzar != false){
-                    if (i == 59){
-                        i = 0;
-                        f++;
-                        total += f;
-                    }
-                    i++;
-                    segundos.setText(total+" minutos");
-                }
-                else{
-                    System.out.println("Terminooo");
+            if (avanzar) {
+                segundos.setText(f +":"+ i + "minutos");
+                i++;
+                if(i==60){
+                    i=00;
+                    f++;
+                    JOptionPane.showMessageDialog(null, "Lleva "+f+" minutos");
                 }
             }
             try {
-                Thread.sleep(10000);
+                Thread.sleep(100);
+                
             } catch (InterruptedException ex) {
 
             }

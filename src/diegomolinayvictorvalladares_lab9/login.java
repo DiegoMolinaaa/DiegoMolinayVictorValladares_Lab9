@@ -112,7 +112,7 @@ public class login extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cb_clases = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        bt_empezarE = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         F1 = new javax.swing.JRadioButton();
         V1 = new javax.swing.JRadioButton();
@@ -134,7 +134,7 @@ public class login extends javax.swing.JFrame {
         F4 = new javax.swing.JRadioButton();
         V5 = new javax.swing.JRadioButton();
         F5 = new javax.swing.JRadioButton();
-        jButton5 = new javax.swing.JButton();
+        bt_finE = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
@@ -298,13 +298,13 @@ public class login extends javax.swing.JFrame {
 
         jPanel4.add(cb_clases, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 190, -1));
 
-        jButton2.setText("Empezar examen");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_empezarE.setText("Empezar examen");
+        bt_empezarE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                bt_empezarEMouseClicked(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanel4.add(bt_empezarE, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
@@ -361,13 +361,13 @@ public class login extends javax.swing.JFrame {
         F5.setText("F");
         jPanel4.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
-        jButton5.setText("Finalizar examen");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_finE.setText("Finalizar examen");
+        bt_finE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                bt_finEMouseClicked(evt);
             }
         });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 210, -1));
+        jPanel4.add(bt_finE, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 210, -1));
 
         jButton6.setText("Agregar Clase");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -767,21 +767,23 @@ public class login extends javax.swing.JFrame {
         jt_clases.setModel(m);
     }//GEN-LAST:event_cb_verClasesItemStateChanged
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Cronometro cronometro = new Cronometro(label_cronometro);
-        try { //por si ya esta iniciado
+    private void bt_empezarEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empezarEMouseClicked
+        cronometro = new Cronometro(label_cronometro);
+        try {
             cronometro.start();
             } catch (Exception e) {
 
             }        
             cronometro.setAvanzar(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+            if(cronometro.getI()==60){
+                JOptionPane.showMessageDialog(null, "Lleva "+cronometro.getF()+" minutos");
+            }
+    }//GEN-LAST:event_bt_empezarEMouseClicked
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        cronometro.setAvanzar(false);
+    private void bt_finEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_finEMouseClicked
         cronometro.setVive(false);
         JOptionPane.showMessageDialog(null, "Ha terminado el examen!!");
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_bt_finEMouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
 
@@ -818,6 +820,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_crudClase;
     private javax.swing.JButton bt_crudExamen;
     private javax.swing.JButton bt_crudPregunta;
+    private javax.swing.JButton bt_empezarE;
+    private javax.swing.JButton bt_finE;
     private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarse_maestro;
     private javax.swing.JButton bt_registro_alumno;
@@ -827,9 +831,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_idClases;
     private javax.swing.JComboBox<String> cb_verClases;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
