@@ -12,6 +12,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author diego
@@ -27,7 +28,37 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         administrarExamenes aE = new administrarExamenes("./Examenes.cbm");
         aE.cargarArchivo();
-        System.out.println(aE.getListaExamenes());
+        cargarMaestros();
+        cargarAlumnos();
+    }
+    public void cargarMaestros(){
+        Dba db = new Dba("./Universidad.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Nombre,RRHH,Usuario,Password from Maestros");
+            ResultSet rs = db.query.getResultSet();           
+            while (rs.next()) {
+                maestros.add(new Maestro(rs.getInt(2), rs.getString(1), rs.getString(3), rs.getString(4)));
+            }            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+    
+    public void cargarAlumnos(){
+        Dba db = new Dba("./Universidad.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Nombre,NumCuenta,Carrera,Usuario,Password from Alumnos");
+            ResultSet rs = db.query.getResultSet();           
+            while (rs.next()) {
+                alumnos.add(new Alumno(rs.getInt(2), rs.getString(3), rs.getString(1), rs.getString(4), rs.getString(5)));
+            }            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
     }
 
     /**
@@ -70,7 +101,39 @@ public class login extends javax.swing.JFrame {
         plataforma_alumno = new javax.swing.JFrame();
         jPanel4 = new javax.swing.JPanel();
         label_nombre_alumno = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        label_cronometro = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cb_clases = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        F1 = new javax.swing.JRadioButton();
+        V1 = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        label_q1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        label_q2 = new javax.swing.JLabel();
+        label_q3 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        label_q4 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        label_q5 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        V2 = new javax.swing.JRadioButton();
+        F2 = new javax.swing.JRadioButton();
+        V3 = new javax.swing.JRadioButton();
+        F3 = new javax.swing.JRadioButton();
+        V4 = new javax.swing.JRadioButton();
+        F4 = new javax.swing.JRadioButton();
+        V5 = new javax.swing.JRadioButton();
+        F5 = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
         bt_crudExamen = new javax.swing.JButton();
@@ -81,6 +144,10 @@ public class login extends javax.swing.JFrame {
         jd_crearExamen = new javax.swing.JDialog();
         cb_idClases = new javax.swing.JComboBox<>();
         bt_crearExamen = new javax.swing.JButton();
+        jd_verClases = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_clases = new javax.swing.JTable();
+        cb_verClases = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -190,10 +257,123 @@ public class login extends javax.swing.JFrame {
         label_nombre_alumno.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(label_nombre_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 200, 30));
 
-        jLabel15.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Bienvenido: ");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        label_cronometro.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        label_cronometro.setForeground(new java.awt.Color(0, 0, 0));
+        label_cronometro.setText("0:00 minutos");
+        jPanel4.add(label_cronometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        jButton1.setText("Modificar");
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("1.-");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("2.-");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("3.-");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("4.-");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("5.-");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Clase");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jPanel4.add(cb_clases, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 190, -1));
+
+        jButton2.setText("Empezar examen");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Bienvenido: ");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        F1.setForeground(new java.awt.Color(0, 0, 0));
+        F1.setText("F");
+        jPanel4.add(F1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
+
+        V1.setForeground(new java.awt.Color(0, 0, 0));
+        V1.setText("V");
+        jPanel4.add(V1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 380, 20));
+        jPanel4.add(label_q1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 380, 30));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 380, 20));
+        jPanel4.add(label_q2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 380, 20));
+        jPanel4.add(label_q3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 380, 20));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 380, 20));
+        jPanel4.add(label_q4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 380, 20));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 380, 20));
+        jPanel4.add(label_q5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 380, 20));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 380, 20));
+
+        V2.setForeground(new java.awt.Color(0, 0, 0));
+        V2.setText("V");
+        jPanel4.add(V2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
+
+        F2.setForeground(new java.awt.Color(0, 0, 0));
+        F2.setText("F");
+        jPanel4.add(F2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
+
+        V3.setForeground(new java.awt.Color(0, 0, 0));
+        V3.setText("V");
+        jPanel4.add(V3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
+
+        F3.setForeground(new java.awt.Color(0, 0, 0));
+        F3.setText("F");
+        jPanel4.add(F3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
+
+        V4.setForeground(new java.awt.Color(0, 0, 0));
+        V4.setText("V");
+        jPanel4.add(V4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
+
+        F4.setForeground(new java.awt.Color(0, 0, 0));
+        F4.setText("F");
+        jPanel4.add(F4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+
+        V5.setForeground(new java.awt.Color(0, 0, 0));
+        V5.setText("V");
+        jPanel4.add(V5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
+
+        F5.setForeground(new java.awt.Color(0, 0, 0));
+        F5.setText("F");
+        jPanel4.add(F5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
+
+        jButton5.setText("Finalizar examen");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 210, -1));
+
+        jButton6.setText("Agregar Clase");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 150, 30));
 
         plataforma_alumno.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 410));
 
@@ -227,6 +407,11 @@ public class login extends javax.swing.JFrame {
         plataforma_admin.getContentPane().add(bt_crudClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 270, 50));
 
         bt_verClases.setText("Ver Clases");
+        bt_verClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_verClasesActionPerformed(evt);
+            }
+        });
         plataforma_admin.getContentPane().add(bt_verClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 270, 60));
 
         bt_crudPregunta.setText("Crear Pregunta");
@@ -261,6 +446,45 @@ public class login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(bt_crearExamen)
                 .addGap(87, 87, 87))
+        );
+
+        jt_clases.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Examen", "Cant Preguntas"
+            }
+        ));
+        jScrollPane1.setViewportView(jt_clases);
+
+        cb_verClases.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_verClasesItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_verClasesLayout = new javax.swing.GroupLayout(jd_verClases.getContentPane());
+        jd_verClases.getContentPane().setLayout(jd_verClasesLayout);
+        jd_verClasesLayout.setHorizontalGroup(
+            jd_verClasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_verClasesLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verClasesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cb_verClases, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
+        );
+        jd_verClasesLayout.setVerticalGroup(
+            jd_verClasesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verClasesLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(cb_verClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -375,6 +599,7 @@ public class login extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
         }
+        this.setVisible(true);
     }//GEN-LAST:event_bt_registrarse_maestroMouseClicked
 
     private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
@@ -446,6 +671,7 @@ public class login extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
         }
+        this.setVisible(true);
     }//GEN-LAST:event_bt_registro_alumnoMouseClicked
 
     private void bt_crudClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crudClaseActionPerformed
@@ -494,6 +720,67 @@ public class login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Examen guardado exitosamente");
     }//GEN-LAST:event_bt_crearExamenActionPerformed
 
+    private void bt_verClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verClasesActionPerformed
+        // TODO add your handling code here:
+        jd_verClases.pack();
+        jd_verClases.setVisible(true);
+        jt_clases.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Examen 1", "Examen 2"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_verClases.getModel();
+        dc.removeAllElements();
+        for (Clase clase : clases) {
+            dc.addElement(clase);
+        }
+        cb_verClases.setModel(dc);
+    }//GEN-LAST:event_bt_verClasesActionPerformed
+
+    private void cb_verClasesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_verClasesItemStateChanged
+        // TODO add your handling code here:
+        Clase c = (Clase)cb_verClases.getSelectedItem();
+        DefaultTableModel m = (DefaultTableModel) jt_clases.getModel();
+        m.setRowCount(0);
+        Object row[] = {c.getIdEx1(), 5};
+        m.addRow(row);
+        Object row2[] = {c.getIdEx2(), 5};
+        m.addRow(row2);
+        jt_clases.setModel(m);
+    }//GEN-LAST:event_cb_verClasesItemStateChanged
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        cronometro = new Cronometro (label_cronometro);
+        Thread proceso1 = new Thread (cronometro);
+        proceso1.start();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // cronometro.setVive(false);
+        cronometro.setAvanzar(false);
+        JOptionPane.showMessageDialog(null, "Ha terminado el examen!!");
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -510,6 +797,16 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;
+    private javax.swing.JRadioButton F1;
+    private javax.swing.JRadioButton F2;
+    private javax.swing.JRadioButton F3;
+    private javax.swing.JRadioButton F4;
+    private javax.swing.JRadioButton F5;
+    private javax.swing.JRadioButton V1;
+    private javax.swing.JRadioButton V2;
+    private javax.swing.JRadioButton V3;
+    private javax.swing.JRadioButton V4;
+    private javax.swing.JRadioButton V5;
     private javax.swing.JButton bt_Calificaciones;
     private javax.swing.JButton bt_crearExamen;
     private javax.swing.JButton bt_crudClase;
@@ -520,16 +817,28 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton bt_registro_alumno;
     private javax.swing.JButton bt_registro_m;
     private javax.swing.JButton bt_verClases;
+    private javax.swing.JComboBox<String> cb_clases;
     private javax.swing.JComboBox<String> cb_idClases;
+    private javax.swing.JComboBox<String> cb_verClases;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -541,8 +850,22 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JDialog jd_crearExamen;
+    private javax.swing.JDialog jd_verClases;
+    private javax.swing.JTable jt_clases;
+    private javax.swing.JLabel label_cronometro;
     private javax.swing.JLabel label_nombre_alumno;
+    private javax.swing.JLabel label_q1;
+    private javax.swing.JLabel label_q2;
+    private javax.swing.JLabel label_q3;
+    private javax.swing.JLabel label_q4;
+    private javax.swing.JLabel label_q5;
     private javax.swing.JPasswordField pf_password_alumno;
     private javax.swing.JPasswordField pf_password_maestro;
     private javax.swing.JFrame plataforma_admin;
@@ -566,4 +889,5 @@ public class login extends javax.swing.JFrame {
     ArrayList <Alumno> alumnos = new ArrayList ();
     ArrayList <Maestro> maestros = new ArrayList ();
     ArrayList<Clase> clases = new ArrayList();
+    Cronometro cronometro;
 }
