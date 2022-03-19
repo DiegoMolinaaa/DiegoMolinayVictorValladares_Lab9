@@ -32,6 +32,10 @@ public class login extends javax.swing.JFrame {
         aE.cargarArchivo();
         cargarMaestros();
         cargarAlumnos();
+        cargarClases();
+        System.out.println(alumnos);
+        System.out.println(maestros);
+        System.out.println(clases);
     }
     public void cargarMaestros(){
         Dba db = new Dba("./Universidad.accdb");
@@ -56,6 +60,20 @@ public class login extends javax.swing.JFrame {
             ResultSet rs = db.query.getResultSet();           
             while (rs.next()) {
                 alumnos.add(new Alumno(rs.getInt(2), rs.getString(3), rs.getString(1), rs.getString(4), rs.getString(5)));
+            }            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+    public void cargarClases(){
+        Dba db = new Dba("./Universidad.accdb");
+        db.conectar();
+        try {
+            db.query.execute("select Nombre,IDclase,IDmaestro,IDexamen1,IDexamen2 from Clases");
+            ResultSet rs = db.query.getResultSet();           
+            while (rs.next()) {
+                clases.add(new Clase(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
             }            
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -136,6 +154,7 @@ public class login extends javax.swing.JFrame {
         F5 = new javax.swing.JRadioButton();
         bt_finE = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jl_notificacion = new javax.swing.JLabel();
         plataforma_maestro = new javax.swing.JFrame();
         plataforma_admin = new javax.swing.JFrame();
         bt_crudExamen = new javax.swing.JButton();
@@ -377,6 +396,10 @@ public class login extends javax.swing.JFrame {
         });
         jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 150, 30));
 
+        jl_notificacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jl_notificacion.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel4.add(jl_notificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 230, 20));
+
         plataforma_alumno.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 410));
 
         javax.swing.GroupLayout plataforma_maestroLayout = new javax.swing.GroupLayout(plataforma_maestro.getContentPane());
@@ -564,7 +587,6 @@ public class login extends javax.swing.JFrame {
         String Password;
         String confirm;
         int rrhh;
-        
         try{
             nombre = tf_nombre_maestro.getText();
             user = tf_user_maestro.getText();
@@ -581,8 +603,8 @@ public class login extends javax.swing.JFrame {
                 db.conectar();
                 
                 db.query.execute("INSERT INTO Maestros"
-                    + " (Nombre,RRHH)"
-                    + " VALUES ('" + nombre + "', '" + rrhh + "')");
+                    + " (Nombre,RRHH,Usuario,Password)"
+                    + " VALUES ('" + nombre + "', '" + rrhh + "', '" + user + "', '" + Password + "')");
                 db.commit();
                 
                 JOptionPane.showMessageDialog(null, "Se ha creado el maestro exitosamente");
@@ -601,7 +623,6 @@ public class login extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
         }
-        this.setVisible(true);
     }//GEN-LAST:event_bt_registrarse_maestroMouseClicked
 
     private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
@@ -623,6 +644,8 @@ public class login extends javax.swing.JFrame {
             }
             if(entraA==false){
                 for (Maestro maestro : maestros) {
+                    System.out.println(maestro.getUser()+" / "+user);
+                    System.out.println(maestro.getPass()+ " / " + pass);
                     if(maestro.getUser().equals(user) && maestro.getPass().equals(pass)){
                         entraM = true;
                         break;
@@ -632,7 +655,7 @@ public class login extends javax.swing.JFrame {
                     plataforma_maestro.setVisible(true);
                 }
             }
-            else if(entraA==true){
+            else if(entraA==true){;
                 plataforma_alumno.setVisible(true);
             }
             else if(entraA == false && entraM == false){
@@ -657,8 +680,8 @@ public class login extends javax.swing.JFrame {
             db.conectar();
             try {
                 db.query.execute("INSERT INTO Alumnos"
-                        + " (Nombre,NumCuenta,Carrera)"
-                        + " VALUES ('" + nombre + "', '" + numCuenta + "', '" + nombre + "')");
+                        + " (Nombre,NumCuenta,Carrera,Usuario,Password)"
+                        + " VALUES ('" + nombre + "', '" + numCuenta + "', '" + carrera + "', '" + user + "', '" + pass + "')");
             } catch (SQLException ex) {
                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -669,11 +692,14 @@ public class login extends javax.swing.JFrame {
             tf_user_alumno.setText("");
             tf_password_alumno.setText("");
             pf_password_alumno.setText("");
+            tf_carrera_alumno.setText("");
+            this.setVisible(true);
+            this.setLocationRelativeTo(null);
+            registro_alumno.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null, "Las contrasenas no coinciden");
         }
-        this.setVisible(true);
     }//GEN-LAST:event_bt_registro_alumnoMouseClicked
 
     private void bt_crudClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crudClaseActionPerformed
@@ -686,7 +712,7 @@ public class login extends javax.swing.JFrame {
             db.conectar();
             try {
                 db.query.execute("INSERT INTO Clases"
-                        + " (Nombre,IDclase)"
+                        + " (Nombre,IDClase)"
                         + " VALUES ('" + nomClase + "', '" + idClase + "')");
             } catch (SQLException ex) {
                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
@@ -768,7 +794,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_verClasesItemStateChanged
 
     private void bt_empezarEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empezarEMouseClicked
-        cronometro = new Cronometro(label_cronometro);
+        cronometro = new Cronometro(label_cronometro, jl_notificacion);
         try {
             cronometro.start();
             } catch (Exception e) {
@@ -788,7 +814,7 @@ public class login extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
 
     }//GEN-LAST:event_jButton6MouseClicked
-
+    
     /**
      * @param args the command line arguments
      */
@@ -866,6 +892,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JDialog jd_crearExamen;
     private javax.swing.JDialog jd_verClases;
+    private javax.swing.JLabel jl_notificacion;
     private javax.swing.JTable jt_clases;
     private javax.swing.JLabel label_cronometro;
     private javax.swing.JLabel label_nombre_alumno;

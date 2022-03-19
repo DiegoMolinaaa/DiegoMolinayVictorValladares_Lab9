@@ -7,11 +7,13 @@ public class Cronometro extends Thread{
     private boolean avanzar;
     private boolean vive;
     private JLabel segundos;
+    private JLabel noti;
     private int i;
     private int f;
     
-    public Cronometro(JLabel segundos) {
+    public Cronometro(JLabel segundos, JLabel notificacion) {
         this.segundos =segundos;
+        this.noti = notificacion;
         avanzar = true;
         vive = true;
         i = 0;
@@ -53,7 +55,11 @@ public class Cronometro extends Thread{
                 if(i==60){
                     i=00;
                     f++;
-                    JOptionPane.showMessageDialog(null, "Lleva "+f+" minutos");
+                    noti.setVisible(true);
+                    noti.setText("LLEVAS "+f+" MINUTOS");
+                }
+                if(i==15){
+                    noti.setVisible(false);
                 }
             }
             try {
