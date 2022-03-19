@@ -741,6 +741,7 @@ public class login extends javax.swing.JFrame {
         aE.setExamen(e);
         aE.escribirArchivo();
         JOptionPane.showMessageDialog(this, "Examen guardado exitosamente");
+        
     }//GEN-LAST:event_bt_crearExamenActionPerformed
 
     private void bt_verClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verClasesActionPerformed
