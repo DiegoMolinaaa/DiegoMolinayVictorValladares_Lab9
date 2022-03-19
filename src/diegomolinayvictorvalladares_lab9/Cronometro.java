@@ -7,11 +7,15 @@ public class Cronometro extends Thread{
     private boolean avanzar;
     private boolean vive;
     private JLabel segundos;
+    private int i;
+    private int f;
     
     public Cronometro(JLabel segundos) {
         this.segundos =segundos;
         avanzar = true;
         vive = true;
+        i = 0;
+        f = 0;
     }
 
     
@@ -27,24 +31,22 @@ public class Cronometro extends Thread{
     public void run() {
         int total = 0;
         while (vive) {
-            
-            if (avanzar) {
-                int i = 0; 
-                int f = 0;
-                while (i < 60){
-                    
-                    segundos.setText(f+ ":"+i+" minutos");
+            while (avanzar) {
+                if(avanzar != false){
                     if (i == 59){
+                        i = 0;
                         f++;
                         total += f;
-                        JOptionPane.showMessageDialog(null, "Han pasado " + total + " minutos");
                     }
+                    i++;
+                    segundos.setText(total+" minutos");
                 }
-                
-                
+                else{
+                    System.out.println("Terminooo");
+                }
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10000);
             } catch (InterruptedException ex) {
 
             }

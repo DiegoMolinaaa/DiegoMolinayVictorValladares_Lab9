@@ -27,6 +27,8 @@ public class login extends javax.swing.JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         administrarExamenes aE = new administrarExamenes("./Examenes.cbm");
+        Alumno a = new Alumno(123, "marco", "marc", "1234");
+        alumnos.add(a);
         aE.cargarArchivo();
         cargarMaestros();
         cargarAlumnos();
@@ -766,14 +768,18 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_verClasesItemStateChanged
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        cronometro = new Cronometro (label_cronometro);
-        Thread proceso1 = new Thread (cronometro);
-        proceso1.start();
+        Cronometro cronometro = new Cronometro(label_cronometro);
+        try { //por si ya esta iniciado
+            cronometro.start();
+            } catch (Exception e) {
+
+            }        
+            cronometro.setAvanzar(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // cronometro.setVive(false);
         cronometro.setAvanzar(false);
+        cronometro.setVive(false);
         JOptionPane.showMessageDialog(null, "Ha terminado el examen!!");
     }//GEN-LAST:event_jButton5MouseClicked
 

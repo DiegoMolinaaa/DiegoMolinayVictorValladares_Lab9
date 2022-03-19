@@ -43,7 +43,7 @@ public class administrarExamenes {
 
     @Override
     public String toString() {
-        return "listaCarros=" + listaExamenes;
+        return "listaExamenes=" + listaExamenes;
     }
 
     //extra mutador
