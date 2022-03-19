@@ -41,5 +41,4 @@ public class Pregunta {
     public String toString() {
         return pregunta;
     }
-    
 }

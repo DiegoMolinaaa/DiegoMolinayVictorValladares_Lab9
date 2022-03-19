@@ -73,6 +73,5 @@ public class Clase {
     @Override
     public String toString() {
         return nombre;
-    }            
-    
+    }
 }

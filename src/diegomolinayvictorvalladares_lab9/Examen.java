@@ -6,15 +6,15 @@
 package diegomolinayvictorvalladares_lab9;
 
 import java.util.ArrayList;
-
+import java.io.Serializable;
 /**
  *
  * @author diego
  */
-public class Examen {
+public class Examen implements Serializable {
     private int idClase;
     private ArrayList<Pregunta> preguntas = new ArrayList();
-
+    private static final long SerialVersionUID=555L;
     public Examen() {
     }
 
@@ -41,6 +41,5 @@ public class Examen {
     @Override
     public String toString() {
         return idClase+"";
-    }    
-    
+    }
 }

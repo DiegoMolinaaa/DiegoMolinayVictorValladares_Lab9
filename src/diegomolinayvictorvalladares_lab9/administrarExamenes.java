@@ -25,11 +25,11 @@ public class administrarExamenes {
         archivo = new File(path);
     }
 
-    public ArrayList<Examen> getListaCarros() {
+    public ArrayList<Examen> getListaExamenes() {
         return listaExamenes;
     }
 
-    public void setListaCarros(ArrayList<Examen> listaCarros) {
+    public void setListaExamenes(ArrayList<Examen> listaCarros) {
         this.listaExamenes = listaCarros;
     }
     

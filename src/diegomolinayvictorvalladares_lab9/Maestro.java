@@ -32,5 +32,4 @@ public class Maestro extends Usuario {
     public String toString() {
         return super.getNombre();
     }
-    
 }

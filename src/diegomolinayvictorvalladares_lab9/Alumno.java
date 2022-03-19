@@ -84,5 +84,4 @@ public class Alumno extends Usuario {
     public String toString() {
         return super.getNombre();
     }
-    
 }
