@@ -33,9 +33,6 @@ public class login extends javax.swing.JFrame {
         cargarMaestros();
         cargarAlumnos();
         cargarClases();
-        System.out.println(alumnos);
-        System.out.println(maestros);
-        System.out.println(clases);
     }
     public void cargarMaestros(){
         Dba db = new Dba("./Universidad.accdb");
@@ -644,8 +641,6 @@ public class login extends javax.swing.JFrame {
             }
             if(entraA==false){
                 for (Maestro maestro : maestros) {
-                    System.out.println(maestro.getUser()+" / "+user);
-                    System.out.println(maestro.getPass()+ " / " + pass);
                     if(maestro.getUser().equals(user) && maestro.getPass().equals(pass)){
                         entraM = true;
                         break;
